@@ -23,13 +23,13 @@ S="${WORKDIR}"
 QA_PREBUILT="usr/sbin/bubbleunp"
 
 pkg_setup() {
-		enewuser bubbleupnp -1 -1 "/dev/null" "networkaudiod,audio"
+		enewuser bubbleupnp -1 -1 "/dev/null" "bubbleupnp,audio"
   }
 
 
 src_install() {
     chmod +x launch.sh
-    emake DESTDIR="${D}" install
+    cp -r * "${D}"
     newinitd "${FILESDIR}/roonbridge.init.d" "bubbleupnp"
 }
 
