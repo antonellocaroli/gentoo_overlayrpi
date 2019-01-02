@@ -23,7 +23,7 @@ S="${WORKDIR}"
 QA_PREBUILT="usr/sbin/bubbleunp"
 
 pkg_setup() {
-		enewuser bubbleupnp -1 -1 "/dev/null" "bubbleupnp,audio"
+		enewuser bubbleupnp -1 -1 "/dev/null" "bubbleupnp,audio,realtime"
   }
 
 
