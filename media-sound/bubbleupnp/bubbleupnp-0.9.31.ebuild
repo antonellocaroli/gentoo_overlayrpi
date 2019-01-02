@@ -27,14 +27,14 @@ pkg_setup() {
 }
 
 
-src_unpack() {
-	mkdir "${S}"
-	unzip "${DISTDIR}"/"${P}.zip" -C "${S}" --strip-components=1 &> /dev/null || die "unpack failed"
-}
+#src_unpack() {
+#	mkdir "${S}"
+#	unzip "${DISTDIR}"/"${P}.zip" -C "${S}" --strip-components=1 &> /dev/null || die "unpack failed"
+#}
 
 src_install() {
     chmod +x launch.sh
-    cp -r "${S}" "${D}"
+    cp -r "../${S}" "${D}"
     newinitd "${FILESDIR}/bubbleupnp.init.d" "bubbleupnp"
 }
 
