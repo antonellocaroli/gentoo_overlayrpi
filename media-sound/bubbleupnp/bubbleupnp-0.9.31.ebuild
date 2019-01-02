@@ -29,7 +29,7 @@ pkg_setup() {
 
 src_install() {
     chmod +x launch.sh
-    cp -r * "${D}"
+    cp -r * "${D}/bubbleupnp"
     newinitd "${FILESDIR}/bubbleupnp.init.d" "bubbleupnp"
 }
 
