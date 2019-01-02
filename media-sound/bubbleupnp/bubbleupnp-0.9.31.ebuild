@@ -30,7 +30,7 @@ pkg_setup() {
 src_install() {
     chmod +x launch.sh
     cp -r * "${D}"
-    newinitd "${FILESDIR}/roonbridge.init.d" "bubbleupnp"
+    newinitd "${FILESDIR}/bubbleupnp.init.d" "bubbleupnp"
 }
 
 pkg_postinst() {
