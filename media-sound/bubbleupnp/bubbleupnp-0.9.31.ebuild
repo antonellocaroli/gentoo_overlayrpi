@@ -20,7 +20,6 @@ DEPEND="${RDEPEND}"
 
 
 S="${WORKDIR}"
-WORKDIR="bubbleunp"
 QA_PREBUILT="usr/sbin/bubbleunp"
 
 pkg_setup() {
@@ -30,7 +29,7 @@ pkg_setup() {
 
 src_install() {
     chmod +x launch.sh
-    cp -r bubbleunp "${D}"
+    dodir /bubbleupnp
     newinitd "${FILESDIR}/bubbleupnp.init.d" "bubbleupnp"
 }
 
