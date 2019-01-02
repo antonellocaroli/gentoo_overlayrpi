@@ -24,12 +24,12 @@ QA_PREBUILT="usr/sbin/bubbleunp"
 
 pkg_setup() {
 		enewuser bubbleupnp -1 -1 "/dev/null" "bubbleupnp,audio,realtime"
+    dodir /bubbleupnp
   }
 
 
 src_install() {
     chmod +x launch.sh
-    dodir /bubbleupnp
     cp -r * "${D}/bubbleunp"
     newinitd "${FILESDIR}/bubbleupnp.init.d" "bubbleupnp"
 }
