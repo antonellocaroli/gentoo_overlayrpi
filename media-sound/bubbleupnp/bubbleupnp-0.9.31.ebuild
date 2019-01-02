@@ -20,6 +20,7 @@ DEPEND="${RDEPEND}"
 
 
 S="${WORKDIR}"
+#WORKDIR="bubbleunp"
 QA_PREBUILT="usr/sbin/bubbleunp"
 
 pkg_setup() {
