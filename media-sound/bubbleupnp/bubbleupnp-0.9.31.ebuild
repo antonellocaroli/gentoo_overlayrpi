@@ -24,12 +24,17 @@ QA_PREBUILT="usr/sbin/bubbleunp"
 
 pkg_setup() {
 		enewuser bubbleupnp -1 -1 "/dev/null" "bubbleupnp,audio,realtime"
-      }
+}
 
+
+src_unpack() {
+	mkdir "${S}"
+	unzip "${DISTDIR}"/"${P}.zip" -C "${S}" --strip-components=1 &> /dev/null || die "unpack failed"
+}
 
 src_install() {
     chmod +x launch.sh
-    dodir /bubbleupnp
+    cp -r "${S}" "${D}"
     newinitd "${FILESDIR}/bubbleupnp.init.d" "bubbleupnp"
 }
 
