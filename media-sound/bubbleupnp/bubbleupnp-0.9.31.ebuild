@@ -8,7 +8,7 @@ inherit eutils unpacker user
 
 DESCRIPTION="music player"
 HOMEPAGE="https://roonlabs.com/index.html"
-SRC_URI="http://download.roonlabs.com/builds/RoonBridge_linuxarmv8.tar.bz2 -> ${P}.tar.bz2"
+SRC_URI="https://bubblesoftapps.com/bubbleupnpserver/BubbleUPnPServer-distrib.zip -> ${P}.zip"
 
 SLOT="0"
 KEYWORDS="~amd64 ~arm64"
@@ -20,11 +20,11 @@ DEPEND="${RDEPEND}"
 
 
 S="${WORKDIR}"
-QA_PREBUILT="usr/sbin/RoonBridge"
+QA_PREBUILT="usr/sbin/bubbleunp"
 
 
 src_install() {
-  cp -r RoonBridge "${D}"
+  cp -r bubbleupnp "${D}"
   newinitd "${FILESDIR}/roonbridge.init.d" "roonbridge"
 }
 
