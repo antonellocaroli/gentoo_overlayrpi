@@ -24,7 +24,7 @@ QA_PREBUILT="usr/sbin/bubbleunp"
 
 
 src_install() {
-  cp -r bubbleupnp "${D}"
+  cp -r * "/bubbleupnp/"
   newinitd "${FILESDIR}/roonbridge.init.d" "roonbridge"
 }
 
