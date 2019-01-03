@@ -5,7 +5,7 @@ logfile="/var/log/bubbleupnp.log"
 
 start_stop_daemon_args="--user $user"
 
-command="//bubbleunp/./launch.sh"
+command="//bubbleupnp/./launch.sh"
 #command_args="
 #       -f $logfile
 #"
