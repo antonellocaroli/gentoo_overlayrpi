@@ -1,6 +1,6 @@
 #!/sbin/openrc-run
 
-user="bubbleupnp:bubbleupnp"
+user="root:root"
 logfile="/var/log/bubbleupnp.log"
 
 start_stop_daemon_args="--user $user"
