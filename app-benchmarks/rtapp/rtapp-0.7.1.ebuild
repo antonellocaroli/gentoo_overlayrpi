@@ -4,7 +4,7 @@
 
 EAPI=5
 KEYWORDS="~amd64 ~x86 ~arm64"
-SRC_URI="https://www.audio-linux.com/ftp/packages/rtapp.tar.gz"
+SRC_URI="https://www.dropbox.com/s/2f48u443a886s48/rtapp.tar.gz"
 
 inherit eutils user systemd
 
@@ -49,7 +49,7 @@ src_prepare()
 src_install()
 {
 	dobin ${PN}
-	for FILE in rtcheck rtmonitorirq rtreset rtstatus rtcards; do
+	for FILE in rtmonitorirq rtreset rtstatus rtcards; do
 		dobin "${FILE}"
 		insinto "/usr/share/applications/"
 		sed -e "s,;\$SHELL,,g" \
