@@ -3,7 +3,7 @@
 # $Header: app-benchmarks/rt-tests/rt-tests-0.93.ebuild,v 1.1 2015/08/16 Exp $
 
 EAPI=5
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="~amd64 ~x86 ~arm64"
 SRC_URI="https://www.audio-linux.com/ftp/packages/rtapp.tar.gz"
 
 inherit eutils user systemd
@@ -49,7 +49,7 @@ src_prepare()
 src_install()
 {
 	dobin ${PN}
-	for FILE in rtmonitorirq rtstatus rtcards; do
+	for FILE in rtcheck rtmonitorirq rtstatus rtcards; do
 		dobin "${FILE}"
 		insinto "/usr/share/applications/"
 		sed -e "s,;\$SHELL,,g" \
