@@ -4,7 +4,7 @@
 
 EAPI=5
 KEYWORDS="~amd64 ~x86"
-SRC_URI="http://www.tophifi.it/ftp/packages/rtapp.tar.gz"
+SRC_URI="https://www.audio-linux.com/ftp/packages/rtapp.tar.gz"
 
 inherit eutils user systemd
 
@@ -62,8 +62,8 @@ src_install()
 	doins rtapp.conf
 
 	if use systemd; then
-		systemd_dounit "${S}"/rtapp.service
-		systemd_dounit "${S}"/rtapp.timer
+		systemd_dounit "${FILESDIR}/${PN}.service"
+		systemd_dounit "${FILESDIR}/${PN}-timer"
 	else
 		newconfd "${FILESDIR}/${PF}.conf.d" "${PN}-timer"
 		newinitd "${FILESDIR}/${PF}.init.d" "${PN}-timer"
