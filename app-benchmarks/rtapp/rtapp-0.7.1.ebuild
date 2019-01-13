@@ -49,7 +49,7 @@ src_prepare()
 src_install()
 {
 	dobin ${PN}
-	for FILE in rtcheck rtmonitorirq rtreset rtstatus rtcards; do
+	for FILE in rtcheck rtmonitorirq rtstatus rtcards; do
 		dobin "${FILE}"
 		insinto "/usr/share/applications/"
 		sed -e "s,;\$SHELL,,g" \
