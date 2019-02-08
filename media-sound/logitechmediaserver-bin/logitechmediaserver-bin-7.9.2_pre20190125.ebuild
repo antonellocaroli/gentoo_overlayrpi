@@ -7,7 +7,7 @@ inherit eutils user systemd
 
 MY_PN="${PN/-bin}"
 
-PERL_VER="5.26"
+PERL_VER="5.28"
 
 if [[ ${PV} == *_pre* ]] ; then
 	HASHID="f2089582f202bb4f96441ae79b3251007a7c6d62"
