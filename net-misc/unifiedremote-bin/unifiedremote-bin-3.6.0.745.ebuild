@@ -12,8 +12,6 @@ DESCRIPTION="Network AudUnified Remote Server for Linux. Easily the best way of 
 HOMEPAGE="https://www.unifiedremote.com"
 SRC_URI="
 	amd64? ( https://www.unifiedremote.com/download/linux-x64-deb -> ${MY_PN}_${PV}.tar.bz2 )
-	x86?   ( https://www.signalyst.eu/bins/naa/linux/stretch/${MY_PN}_${PV}-39_i386.deb )
-	arm64? ( https://www.signalyst.eu/bins/naa/linux/stretch/${MY_PN}_${PV}-39_arm64.deb )
 "
 
 LICENSE="unifiedremote"
