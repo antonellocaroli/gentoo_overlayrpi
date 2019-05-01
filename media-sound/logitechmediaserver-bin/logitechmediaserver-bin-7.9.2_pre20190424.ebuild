@@ -69,7 +69,7 @@ RDEPEND="
 	>=dev-perl/Template-Toolkit-2.19
 	>=dev-perl/XML-Parser-2.36
 	>=dev-perl/YAML-LibYAML-0.410.0
-	>=IO-Socket-SSL-2.24.0
+	>=dev-perl/IO-Socket-SSL-2.24.0
 	"
 
 QA_PREBUILT="
