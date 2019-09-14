@@ -1,0 +1,10 @@
+--- a/src/Makefile	2014-04-21 17:53:01.000000000 +0200
++++ b/src/Makefile	2014-04-22 12:07:15.351505667 +0200
+@@ -1,6 +1,6 @@
+ PRG=irqtop
+-CFLAGS+=-Wall -Wextra -Wshadow -Werror -O3
++CFLAGS+=-Wall -Wextra -Wshadow -O3
+ #CFLAGS+=-DDEBUG
+ LDFLAGS+=
+
+ SRC=$(wildcard *.c)
