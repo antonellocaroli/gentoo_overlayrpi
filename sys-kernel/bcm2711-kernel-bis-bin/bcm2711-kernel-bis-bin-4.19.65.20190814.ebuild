@@ -22,7 +22,7 @@ DEPEND="
 # if pi3multiboot is specified, depend upon corresponding-date rpi3-specific
 # kernel package too
 RDEPEND="
-	with-matching-boot-fw? ( ~sys-boot/rpi3-64bit-firmware-1.20190819[pitop(-)?,-dtbo(+)] )
+	with-matching-boot-fw? ( ~sys-boot/rpi3-64bit-firmware-1.20190718[pitop(-)?,-dtbo(+)] )
 	pi3multiboot? ( ~sys-kernel/bcmrpi3-kernel-bis-bin-${PV}[checkboot=,with-matching-boot-fw=,pitop=] )
 	!pi3multiboot? (
 		!sys-kernel/bcmrpi3-kernel-bin

@@ -5,10 +5,10 @@ EAPI="6"
 
 inherit eutils autotools
 
-DESCRIPTION="Binary RPi4 64-bit kernel package (bcm2711_defconfig + tweaks)"
-HOMEPAGE="https://github.com/sakaki-/bcm2711-kernel-bis"
+DESCRIPTION="Binary RPi4 64-bit kernel package (bcm2711_defconfig)"
+HOMEPAGE="https://github.com/sakaki-/bcm2711-kernel"
 
-SRC_URI="${HOMEPAGE}/releases/download/${PV}/bcm2711-kernel-bis-${PV}.tar.xz -> ${P}.tar.xz"
+SRC_URI="${HOMEPAGE}/releases/download/${PV}/bcm2711-kernel-${PV}.tar.xz -> ${P}.tar.xz"
 
 LICENSE="GPL-2 freedist"
 SLOT="0"
@@ -18,12 +18,12 @@ IUSE="+checkboot +with-matching-boot-fw pitop +pi3multiboot"
 RESTRICT="mirror"
 
 DEPEND="
-	!sys-kernel/bcm2711-kernel-bin"
+	!sys-kernel/bcm2711-kernel-bis-bin"
 # if pi3multiboot is specified, depend upon corresponding-date rpi3-specific
 # kernel package too
 RDEPEND="
-	with-matching-boot-fw? ( ~sys-boot/rpi3-64bit-firmware-1.20190819[pitop(-)?,-dtbo(+)] )
-	pi3multiboot? ( ~sys-kernel/bcmrpi3-kernel-bis-bin-${PV}[checkboot=,with-matching-boot-fw=,pitop=] )
+	with-matching-boot-fw? ( ~sys-boot/rpi3-64bit-firmware-1.20190718[pitop(-)?,-dtbo(+)] )
+	pi3multiboot? ( ~sys-kernel/bcmrpi3-kernel-bin-${PV}[checkboot=,with-matching-boot-fw=,pitop=] )
 	!pi3multiboot? (
 		!sys-kernel/bcmrpi3-kernel-bin
 		!sys-kernel/bcmrpi3-kernel-bis-bin

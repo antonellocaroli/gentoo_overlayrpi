@@ -1,33 +1,26 @@
-# Copyright (c) 2019 sakaki <sakaki@deciban.com>
+# Copyright (c) 2018 sakaki <sakaki@deciban.com>
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="6"
 
 inherit eutils autotools
 
-DESCRIPTION="Binary RPi4 64-bit kernel package (bcm2711_defconfig + tweaks)"
-HOMEPAGE="https://github.com/sakaki-/bcm2711-kernel-bis"
+DESCRIPTION="Binary RPi3 64-bit kernel package (bcmrpi3_defconfig + tweaks)"
+HOMEPAGE="https://github.com/sakaki-/bcmrpi3-kernel-bis"
 
-SRC_URI="${HOMEPAGE}/releases/download/${PV}/bcm2711-kernel-bis-${PV}.tar.xz -> ${P}.tar.xz"
+SRC_URI="${HOMEPAGE}/releases/download/${PV}/bcmrpi3-kernel-bis-${PV}.tar.xz -> ${P}.tar.xz"
 
 LICENSE="GPL-2 freedist"
 SLOT="0"
 KEYWORDS="~arm64"
-IUSE="+checkboot +with-matching-boot-fw pitop +pi3multiboot"
+IUSE="+checkboot +with-matching-boot-fw pitop"
 
 RESTRICT="mirror"
 
 DEPEND="
-	!sys-kernel/bcm2711-kernel-bin"
-# if pi3multiboot is specified, depend upon corresponding-date rpi3-specific
-# kernel package too
+	!sys-kernel/bcmrpi3-kernel-bin"
 RDEPEND="
-	with-matching-boot-fw? ( ~sys-boot/rpi3-64bit-firmware-1.20190819[pitop(-)?,-dtbo(+)] )
-	pi3multiboot? ( ~sys-kernel/bcmrpi3-kernel-bis-bin-${PV}[checkboot=,with-matching-boot-fw=,pitop=] )
-	!pi3multiboot? (
-		!sys-kernel/bcmrpi3-kernel-bin
-		!sys-kernel/bcmrpi3-kernel-bis-bin
-	)
+	with-matching-boot-fw? ( ~sys-boot/rpi3-64bit-firmware-1.20180817[pitop(-)?] )
 	${DEPEND}"
 
 QA_PREBUILT="*"
@@ -54,15 +47,9 @@ src_install() {
 	# just copy tarball contents into temporary install root
 	insinto /boot
 	doins -r "${S%/}/boot"/*
-	# only copy overlays/ directory if not multibooting with a pi3 kernel
-	# (it owns them if this flag is set)
-	# also, don't duplicate COPYING.linux in this case
-	if use pi3multiboot; then
-		rm -rf "${D%/}/boot/overlays"
-		rm -f "${D%/}/boot/COPYING.linux"
-	fi
 	insinto /lib/modules
 	doins -r "${S%/}/lib/modules"/*
+
 	# note that we installed the libraries, for future cleanup
 	RELEASE_NAME=$(head -n1 <(ls -t1d "${S}/lib/modules"/*))
 	RELEASE_NAME="${RELEASE_NAME##*/}"
@@ -105,4 +92,3 @@ pkg_postrm() {
 	done
 	shopt -u nullglob
 }
-
