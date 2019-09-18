@@ -104,4 +104,5 @@ pkg_postrm() {
 		fi
 	done
 	shopt -u nullglob
+	umount /boot
 }
