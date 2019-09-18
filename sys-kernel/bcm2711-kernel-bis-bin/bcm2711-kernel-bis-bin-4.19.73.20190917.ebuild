@@ -38,6 +38,14 @@ S="${WORKDIR}"
 
 pkg_preinst() {
 	mount /boot >/dev/null 2>&1
+	if use checkboot && [[ "${ROOT%/}" == "" ]]; then
+		if ! grep -q "^/boot$" <(cut -d " " -f 2 "/proc/mounts") &>/dev/null; then
+			die "Your /boot directory does not appear to be mounted"
+		fi
+	else
+		ewarn 'Installing into non-default $ROOT'
+		ewarn "Not checking whether /boot is mounted"
+	fi
 }
 
 src_install() {
