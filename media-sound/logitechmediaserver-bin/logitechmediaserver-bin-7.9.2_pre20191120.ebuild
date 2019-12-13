@@ -174,8 +174,8 @@ src_install() {
 
 	#symlink
 	dodir /opt/logitechmediaserver/CPAN/arch/5.30
-	dosym /usr/lib64/perl5/vendor_perl/5.30.0/aarch64-linux-thread-multi /opt/logitechmediaserver/CPAN/arch/5.30/aarch64-linux-thread-multi
-	dosym /usr/lib64/perl5/vendor_perl/5.30.0/aarch64-linux-thread-multi/Image /opt/logitechmediaserver/CPAN/Image
+	dosym /usr/lib64/perl5/vendor_perl/5.30.1/aarch64-linux-thread-multi /opt/logitechmediaserver/CPAN/arch/5.30/aarch64-linux-thread-multi
+	dosym /usr/lib64/perl5/vendor_perl/5.30.1/aarch64-linux-thread-multi/Image /opt/logitechmediaserver/CPAN/Image
 }
 
 lms_starting_instr() {
