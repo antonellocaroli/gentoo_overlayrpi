@@ -5,7 +5,7 @@
 
 description="Network Audio Daemon"
 
-user="networkaudiod:networkaudiod"
+user="root:root"
 logfile="/var/log/networkaudiod.log"
 command="/usr/sbin/networkaudiod"
 command_args=""
