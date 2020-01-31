@@ -720,9 +720,7 @@ pkg_postinst() {
         rm /opt/logitechmediaserver/Bin/aarch64-linux/fl*
 				rm /opt/logitechmediaserver/Bin/aarch64-linux/s*
 				rm /opt/logitechmediaserver/Bin/aarch64-linux/w*
-
-
-	# Point user to database configuration step, if an old installation
+  # Point user to database configuration step, if an old installation
 	# of SBS is found.
 	if [ -f "${SBS_SVRPREFS}" ]; then
 		elog "If this is a new installation of Logitech Media Server and you"
