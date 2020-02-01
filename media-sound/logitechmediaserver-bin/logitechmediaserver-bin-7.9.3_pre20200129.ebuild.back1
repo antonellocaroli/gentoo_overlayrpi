@@ -16,7 +16,7 @@ if [[ ${PV} == *_pre* ]] ; then
 	SRC_URI="http://downloads.slimdevices.com/nightly/7.9/sc/${HASHID}/${MY_PN}-${MY_PV}-${BUILDID}.tgz"
 #	SRC_URI="https://www.dropbox.com/s/ghkkob0aw3nfyug/${MY_PN}-${MY_PV}-${BUILDID}.tgz"
 	S="${WORKDIR}/${MY_PN}-${MY_PV}-${BUILDID}"
-	KEYWORDS="~amd64 ~arm64 ~arm"
+	KEYWORDS="~amd64 ~arm64"
 elif [[ ${PV} == "9999" ]] ; then
 	EGIT_BRANCH="public/7.9"
 	EGIT_REPO_URI="https://github.com/Logitech/slimserver.git"
@@ -25,7 +25,7 @@ elif [[ ${PV} == "9999" ]] ; then
 else
 	SRC_URI="http://downloads.slimdevices.com/LogitechMediaServer_v${PV}/${MY_PN}-${PV}.tgz"
 	S="${WORKDIR}/${MY_PN}-${PV}"
-	KEYWORDS="~amd64 ~arm64 ~arm"
+	KEYWORDS="~amd64 ~arm64"
 fi
 
 DESCRIPTION="Logitech Media Server (streaming audio server)"
@@ -624,15 +624,8 @@ src_prepare() {
 	(cd CPAN && rm -rf Image)
 	(cd CPAN/arch && rm -rf 5.10 5.12 5.14 5.16 5.18 5.20 5.22 5.24 5.26 5.28 5.30 5.8)
 	(cd CPAN/arch/${PERL_VER} && rm -rf arm-linux* i386-linux* x86_64* aarch64-linux*)
-	(cd Bin && rm -rf arm-linux i86pc-solaris* sparc-linux i386-linux powerpc-linux)
-	if use amd64 ; then
-		rm -rf Bin/aarch64-linux rm -rf Bin/armhf-linux
-	elif use arm64 ; then
-		rm -rf Bin/x86_64-linux rm -rf Bin/armhf-linux
-	elif use arm ; then
-		rm -rf Bin/x86_64-linux rm -rf Bin/aarch64-linux
-	fi
-	default
+	(cd Bin && rm -rf arm*-linux i86pc-solaris* sparc-linux i386-linux powerpc-linux x86_64*)
+	eapply_user
 }
 
 src_install() {
@@ -723,19 +716,10 @@ lms_starting_instr() {
 
 pkg_postinst() {
 	#remove bin
-	if use amd64 ; then
-		rm /opt/logitechmediaserver/Bin/x86_64-linux/fl*
-		rm /opt/logitechmediaserver/Bin/x86_64-linux/s*
-		rm /opt/logitechmediaserver/Bin/x86_64-linux/w*
-	elif use arm64 ; then
-		rm /opt/logitechmediaserver/Bin/aarch64-linux/fl*
-		rm /opt/logitechmediaserver/Bin/aarch64-linux/s*
-		rm /opt/logitechmediaserver/Bin/aarch64-linux/w*
-	elif use arm ; then
-		rm /opt/logitechmediaserver/Bin/armhf-linux/fl*
-		rm /opt/logitechmediaserver/Bin/armhf-linux/s*
-		rm /opt/logitechmediaserver/Bin/armhf-linux/w*
-	fi
+        rm /opt/logitechmediaserver/Bin/x86_64-linux/*
+        rm /opt/logitechmediaserver/Bin/aarch64-linux/fl*
+				rm /opt/logitechmediaserver/Bin/aarch64-linux/s*
+				rm /opt/logitechmediaserver/Bin/aarch64-linux/w*
   # Point user to database configuration step, if an old installation
 	# of SBS is found.
 	if [ -f "${SBS_SVRPREFS}" ]; then
